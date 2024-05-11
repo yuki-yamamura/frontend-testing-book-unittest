@@ -7,8 +7,10 @@ function checkRange(value: number) {
 }
 
 export function add(a: number, b: number) {
-  checkRange(a);
-  checkRange(b);
+  if (!(0 <= a && a <= 100)) {
+  } else if (!(0 <= b && b <= 100)) {
+    throw new Error("out of range");
+  }
   const sum = a + b;
   if (sum > 100) {
     return 100;
