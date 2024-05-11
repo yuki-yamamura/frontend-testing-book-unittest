@@ -13,3 +13,11 @@ export function timeout(duration: number) {
     }, duration);
   });
 }
+
+export function executeAfterWaiting(duration: number, callback: Function) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(callback());
+    }, duration);
+  });
+}

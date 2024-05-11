@@ -129,3 +129,14 @@ describe("オブジェクトの検証", () => {
     });
   });
 });
+
+test.each([null, undefined, ""])("learn Jest matchers", (arg) => {
+  expect(arg).toBeFalsy();
+});
+
+test("learn stringMatching", () => {
+  const obj = { message: "FOO BAR HOGE" };
+  expect(obj).toEqual({
+    message: expect.stringMatching(/bar/i),
+  });
+});

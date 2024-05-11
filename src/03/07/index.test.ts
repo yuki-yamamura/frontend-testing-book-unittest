@@ -1,4 +1,4 @@
-import { timeout, wait } from ".";
+import { executeAfterWaiting, timeout, wait } from ".";
 
 describe("非同期処理", () => {
   describe("wait", () => {
@@ -45,7 +45,16 @@ test("指定時間待つと、経過時間をもって reject される", async 
 
 test("return していないため、Promise が解決する前にテストが終了してしまう", () => {
   // 失敗を期待して書かれたアサーション
-  expect(wait(2000)).resolves.toBe(3000);
+  // expect(wait(2000)).resolves.toBe(3000);
   // 正しくはアサーションを return する
   // return expect(wait(2000)).resolves.toBe(3000);
+});
+
+test("指定時間待ってから、コールバック関数が呼び出される", async () => {
+  const mockedFn = jest.fn().mockReturnValue("Hello, World!");
+
+  const result = await executeAfterWaiting(200, mockedFn);
+
+  expect(result).toBe("Hello, World!");
+  expect(mockedFn).toBeCalled();
 });
