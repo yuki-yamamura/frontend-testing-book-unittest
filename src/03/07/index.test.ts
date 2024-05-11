@@ -58,3 +58,14 @@ test("指定時間待ってから、コールバック関数が呼び出され�
   expect(result).toBe("Hello, World!");
   expect(mockedFn).toBeCalled();
 });
+
+test("'expect.assertions'を使ってみる", async () => {
+  expect.assertions(2);
+
+  try {
+    expect(await wait(100)).toBe(100);
+    await timeout(50);
+  } catch (err) {
+    expect(err).toBe(50);
+  }
+});
