@@ -9,7 +9,8 @@ describe("四則演算", () => {
       expect(add(70, 80)).toBe(100);
     });
     test("引数が'0~100'の範囲外だった場合、例外をスローする", () => {
-      expect(() => add(0, -10)).toThrow();
+      expect(() => add(0, -10)).toThrow(RangeError);
+      expect(() => add(20, 50)).not.toThrow(RangeError);
     });
   });
   describe("sub", () => {
