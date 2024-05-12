@@ -19,3 +19,11 @@ test("Snapshot: 一覧要素が表示される", () => {
   const { container } = render(<ArticleListItem {...item} />);
   expect(container).toMatchSnapshot();
 });
+
+test("learn how to check that an element has an specific attribute", () => {
+  render(<ArticleListItem {...item} />);
+  expect(screen.getByRole("link", { name: "もっと見る" })).toHaveAttribute(
+    "href",
+    "/articles/howto-testing-with-typescript"
+  );
+});
