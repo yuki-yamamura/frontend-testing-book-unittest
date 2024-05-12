@@ -61,7 +61,7 @@ test("不明なエラー時「不明なエラーが発生しました」が表�
 });
 
 test("Snapshot: 登録フォームが表示される", async () => {
-  mockPostMyAddress();
+  // mockPostMyAddress();
   // const mockFn = mockPostMyAddress();
   const { container } = render(<RegisterAddress />);
   // const submitValues = await fillValuesAndSubmit();
